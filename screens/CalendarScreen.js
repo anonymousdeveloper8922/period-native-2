@@ -12,7 +12,6 @@ const CalendarScreen = () => {
   const setDateHandler = (day) => {
     setPressedDate(day);
     console.log(pressedDate);
-    console.log(todayDate);
   };
 
   return (
@@ -28,7 +27,6 @@ const CalendarScreen = () => {
           pastScrollRange={120}
           onDayPress={() => {
             navigation.navigate("Cycle");
-            console.log(todayDate);
           }}
         />
       </View>
