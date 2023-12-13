@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { CalendarList, Calendar } from "react-native-calendars";
+import { DateContext } from "./store/date-context";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -24,34 +25,36 @@ export default function App() {
     headerTitleStyle: { color: "white" },
   };
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Cycle"
-            component={CycleScreen}
-            options={headerStyles}
-          />
-          <Stack.Screen
-            name="Calendar"
-            component={CalendarScreen}
-            options={headerStyles}
-          />
-          <Stack.Screen name="Privacy" component={PrivacyScreen} />
-          <Stack.Screen
-            name="Log Symptoms"
-            component={SymptomsScreen}
-            options={headerStyles}
-          />
-          <Stack.Screen
-            name="Notes"
-            component={NotesScreen}
-            options={headerStyles}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </View>
+    <DateContext.Provider>
+      <View style={styles.container}>
+        <StatusBar style="auto" />
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Cycle"
+              component={CycleScreen}
+              options={headerStyles}
+            />
+            <Stack.Screen
+              name="Calendar"
+              component={CalendarScreen}
+              options={headerStyles}
+            />
+            <Stack.Screen name="Privacy" component={PrivacyScreen} />
+            <Stack.Screen
+              name="Log Symptoms"
+              component={SymptomsScreen}
+              options={headerStyles}
+            />
+            <Stack.Screen
+              name="Notes"
+              component={NotesScreen}
+              options={headerStyles}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </View>
+    </DateContext.Provider>
   );
 }
 
