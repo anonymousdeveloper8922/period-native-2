@@ -1,3 +1,4 @@
+import { useState, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { CalendarList, Calendar } from "react-native-calendars";
@@ -24,8 +25,12 @@ export default function App() {
     headerTintColor: "white",
     headerTitleStyle: { color: "white" },
   };
+
+  const [pressedDate, setPressedDate] = useState(new Date());
+  // const dateCtx = useContext(DateContext);
+
   return (
-    <DateContext.Provider>
+    <DateContext.Provider value={pressedDate}>
       <View style={styles.container}>
         <StatusBar style="auto" />
         <NavigationContainer>

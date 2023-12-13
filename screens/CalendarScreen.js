@@ -6,7 +6,7 @@ import NavBar from "../components/navbar/NavBar";
 
 const CalendarScreen = () => {
   const todayDate = new Date();
-  const [pressedDate, setPressedDate] = useState(new Date());
+
   const navigation = useNavigation();
 
   const setDateHandler = (day) => {

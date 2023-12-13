@@ -1,12 +1,15 @@
+import { useContext } from "react";
 import { Pressable, Button, View, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { DateContext } from "../store/date-context";
 
 const CycleScreen = () => {
   const navigation = useNavigation();
+  const dateCtx = useContext(DateContext);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.dateHeader}>Today</Text>
+      <Text style={styles.dateHeader}>{dateCtx.getDate()}</Text>
       <View style={styles.button}>
         <Button
           style={styles.button}
