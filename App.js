@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { CalendarList, Calendar } from "react-native-calendars";
-import { DateContext } from "./store/date-context";
+import { DateContext, DateContextProvider } from "./store/date-context";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -29,7 +29,7 @@ export default function App() {
   // const dateCtx = useContext(DateContext);
 
   return (
-    <DateContext.Provider value={pressedDate}>
+    <DateContextProvider>
       <View style={styles.container}>
         <StatusBar style="auto" />
         <NavigationContainer>
@@ -58,7 +58,7 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </View>
-    </DateContext.Provider>
+    </DateContextProvider>
   );
 }
 

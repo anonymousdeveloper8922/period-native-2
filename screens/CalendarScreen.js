@@ -1,36 +1,35 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { CalendarList, Calendar } from "react-native-calendars";
-import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/navbar/NavBar";
+import { DateContext, DateContextProvider } from "../store/date-context";
 
 const CalendarScreen = () => {
   const todayDate = new Date();
+  const dateCtx = useContext(DateContext);
 
-  const navigation = useNavigation();
-
-  const setDateHandler = (day) => {
-    setPressedDate(day);
-    console.log(pressedDate);
-  };
+  // const setDateHandler = (day) => {
+  //   setPressedDate(day);
+  //   console.log(pressedDate);
+  // };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.body}>
-        <CalendarList
-          theme={{
-            todayTextColor: "#fe347e",
-            calendarBackground: "#242526",
-            dayTextColor: "white",
-          }}
-          futureScrollRange={12}
-          pastScrollRange={120}
-          onDayPress={() => {
-            navigation.navigate("Cycle");
-          }}
-        />
+    <DateContextProvider>
+      <View style={styles.container}>
+        <View style={styles.body}>
+          <CalendarList
+            theme={{
+              todayTextColor: "#fe347e",
+              calendarBackground: "#242526",
+              dayTextColor: "white",
+            }}
+            futureScrollRange={12}
+            pastScrollRange={120}
+            onDayPress={dateCtx.setActiveDate}
+          />
+        </View>
       </View>
-    </View>
+    </DateContextProvider>
   );
 };
 

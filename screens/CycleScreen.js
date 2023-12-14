@@ -9,7 +9,7 @@ const CycleScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.dateHeader}>{dateCtx.getDate()}</Text>
+      <Text style={styles.dateHeader}>{`${dateCtx.activeDate}`}</Text>
       <View style={styles.button}>
         <Button
           style={styles.button}
