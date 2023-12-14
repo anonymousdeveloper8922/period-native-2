@@ -15,7 +15,6 @@ import SymptomsScreen from "./screens/SymptomsScreen";
 import NotesScreen from "./screens/NotesScreen";
 
 const Stack = createNativeStackNavigator();
-const themeColor = "yellow";
 
 export default function App() {
   const headerStyles = {
