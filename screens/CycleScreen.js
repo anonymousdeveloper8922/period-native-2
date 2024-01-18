@@ -1,9 +1,25 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Pressable, Button, View, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { DateContext } from "../store/date-context";
+import * as SQLite from "expo-sqlite";
 
 const CycleScreen = () => {
+  const db = SQLite.openDatabase("example.db");
+  const [dates, setDates] = useState([]);
+
+  useEffect(() => {
+    db.transaction((tx) => {
+      "CREATE TABLE IF NOT EXISTS dates (date DATE PRIMARY KEY, symptoms TEXT)";
+    });
+
+    db.transaction((tx) => {
+      tx.executeSql("SELECT # FROM dates", null, (textObj, resultSet) =>
+        setDates(resultSet.rows._array)
+      );
+    });
+  });
+
   const navigation = useNavigation();
   const dateCtx = useContext(DateContext);
 
